@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Classmate Edit</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input[type="text"], select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Classmate Edit</h1>
+    <form method="post">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="{{ form.firstname.id_for_label }}">First Name:</label>
+            <input type="text" id="{{ form.firstname.id_for_label }}" name="firstname" required minlength="1" maxlength="50">
+
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ form.lastname.id_for_label }}">Last Name:</label>
+	{{ form.lastname }}
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ form.age.id_for_label }}">Age:</label>
+            <input type="text" id="{{ form.age.id_for_label }}" name="age" pattern="\d+" title="Age must be a number.">
+
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ form.gender.id_for_label }}">Gender:</label>
+            {{ form.gender }}
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ form.address.id_for_label }}">Address:</label>
+            {{ form.address }}
+        </div>
+        
+        <input type="submit" value="Submit" />
+    </form>
+<script>
+  document.querySelector('form').addEventListener('submit', function(event) {
+    var firstname = document.querySelector('#{{ form.firstname.id_for_label }}');
+    var age = document.querySelector('#{{ form.age.id_for_label }}');
+
+    if (firstname.value.trim() === '') {
+      event.preventDefault();
+      alert('First name is required');
+    }
+
+    if (age.value < 1) {
+      event.preventDefault();
+      alert('Age must be at least 1');
+    }
+  });
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Classmate Details</title>
+    <style>
+        body {
+            font-family: Optima, sans-serif;
+            background-color:#f5dfef;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            text-align: center;
+            margin-top: 0;
+        }
+        h2 {
+            margin-top: 10px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Classmate Details</h1>
+        <h2>Name:</h2>
+        <ul>
+            <li>{{ object.firstname }} {{ object.lastname }}</li>
+        </ul>
+        <h2>Age:</h2>
+        <ul>
+            <li>{{ object.age }}</li>
+        </ul>
+        <h2>Gender:</h2>
+        <ul>
+            <li>{{ object.gender }}</li>
+        </ul>
+        <h2>Address:</h2>
+        <ul>
+            <li>{{ object.address }}</li>
+        </ul>
+    </div>
+</body>
+</html>
+

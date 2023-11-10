@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Classmate Delete</title>
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+ <link rel="stylesheet" href="styles.css">
+ <style>
+  body {
+    background-image: url('background.jpg'); /* Replace with your image URL */
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-size: cover;
+  }
+
+  .container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  h1 {
+    text-align: center;
+    margin-top: 0;
+  }
+
+  p {
+    text-align: center;
+  }
+
+  .confirmation {
+    font-weight: bold;
+    color: #FF0000; /* Red color for emphasis */
+  }
+
+  .confirmation input[type="submit"] {
+    background-color: #FF0000; /* Red button for emphasis */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+
+  .confirmation input[type="submit"]:hover {
+    background-color: #D50000; /* Darker red on hover */
+  }
+ </style>
+</head>
+<body>
+ <div class="container">
+  <h1>Classmate Delete</h1>
+  <form method="post">
+    {% csrf_token %}
+    <p>Are you sure you want to delete the following classmate?</p>
+    <p class="confirmation">{{ object }}</p>
+    <input type="submit" value="Confirm Delete" />
+  </form>
+ </div>
+</body>
+</html>
+

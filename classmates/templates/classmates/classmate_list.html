@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+ <link rel="stylesheet" href="styles.css">
+ <style>
+   body {
+     background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCJevALzYc0ro_Ikda6QhwskHuIQfbz5pHHQ&usqp=CAU');
+     background-size: cover;
+     background-color: #f8f9fa;
+   }
+
+   h1 {
+     text-align: center;
+     color: #6c757d;
+   }
+
+   .table {
+     margin-top: 20px;
+     background-color: #fff;
+     border-radius: 10px;
+     box-shadow: 0 0 10px rgba(0,0,0,0.15);
+   }
+
+   .button {
+     display: inline-block;
+     padding: 8px 12px;
+     background-color: #007BFF;
+     color: #fff;
+     border: none;
+     border-radius: 4px;
+     cursor: pointer;
+   }
+
+   .button:hover {
+     background-color: #0056b3;
+   }
+
+   .new-button {
+     position: absolute;
+     top: 10px;
+     right: 10px;
+     padding: 12px 24px;
+     font-size: 16px;
+   }
+ </style>
+</head>
+<body>
+ <div class="container">
+   <h1 class="mt-5">Classmates</h1>
+
+   <div class="bg-white p-3 rounded shadow">
+     <table class="table">
+       <thead>
+         <tr>
+           <th>Firstname</th>
+           <th>Lastname</th>
+          
+           <th>Age</th>
+           <th>Gender</th>
+           <th>Address</th>
+           <th>View</th>
+           <th>Edit</th>
+           <th>Delete</th>
+         </tr>
+       </thead>
+       <tbody>
+         {% for classmate in object_list %}
+           <tr>
+             <td>{{ classmate.firstname }}</td>
+             <td>{{ classmate.lastname }}</td>
+             <td>{{ classmate.age }}</td>
+             <td>{{ classmate.gender }}</td>
+             <td>{{ classmate.address }}</td>
+             <td><button class="button" onclick="location.href='{% url "classmate_view" classmate.id %}'">View</button></td>
+             <td><button class="button" onclick="location.href='{% url "classmate_edit" classmate.id %}'">Edit</button></td>
+             <td><button class="button" onclick="location.href='{% url "classmate_delete" classmate.id %}'">Delete</button></td>
+           </tr>
+         {% endfor %}
+       </tbody>
+     </table>
+   </div>
+
+   <button class="button new-button" onclick="location.href='{% url "classmate_new" %}'">New</button>
+ </div>
+</body>
+</html>
+
